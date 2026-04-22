@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог анекдотов</title>
+
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    background-image: url("https://i.pinimg.com/originals/8a/3f/88/8a3f88703b8b94a0defab67ca0be5501.jpg?nii=t");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+        h1 {
+            color: gold;
+        }
+
+        button {
+            background-color: gold;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        select {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        #joke {
+            margin-top: 20px;
+            font-size: 18px;
+            color: white;
+        }
+
+        img {
+            width: 200px;
+            margin-top: 20px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🤣Каталог анекдотов🤣</h1>
+
+<img src="https://i.pinimg.com/originals/93/dd/a6/93dda651f941477847f7f74835f67288.jpg?nii=t">
+
+<br><br>
+
+<select id="category">
+    <option value="school">Школа</option>
+    <option value="prog">Программисты</option>
+    <option value="life">Жизнь</option>
+    <option value="all">Общее</option>
+    <option value="city">город</option>
+</select>
+
+<br><br>
+
+<button onclick="showJoke()">Случайный анекдот</button>
+
+<p id="joke"></p>
+
+<script>
+const jokes = {
+    school: [
+        "Учитель: Почему тетрадь забыл? А голову дома не забыл? Ученик: Спасибо, что напомнили — завтра принесу и то, и другое.",
+        "учитель: приведи мне пример на будушее время Ученик: Завтра не приду — это будущее время."
+    ],
+    prog: [
+        "Программист заказал 1, 0, -1 пиво...",
+        "Есть 10 типов людей: те, кто понимает двоичную систему..."
+    ],
+    life: [
+        "Хотел начать новую жизнь с чистого листа , но листы закончились.",
+        "Планы на день: первое выжить второе пережить третье остатся в живых."
+    ],
+    city: [
+        "один тип купил село теперь это село городского типа.",
+        "какой бой будет вечным: учитель географии и дальнобойшик играют в города."
+    ]
+};
+
+function showJoke() {
+    let cat = document.getElementById("category").value;
+
+    let arr;
+
+    if (cat === "all") {
+        arr = Object.values(jokes).flat();
+    } else {
+        arr = jokes[cat];
+    }
+
+    let random = arr[Math.floor(Math.random() * arr.length)];
+    document.getElementById("joke").innerText = random;
+}
+</script>
+
+</body>
+</html>
